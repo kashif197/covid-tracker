@@ -29,7 +29,6 @@ const StartScreen = ({ navigation }) => {
     const [nameTwo, setNameTwo] = useState('China')
     const [nameThree, setNameThree] = useState('Italy')
     const [nameFour, setNameFour] = useState('Pakistan')
-    const [nameFive, setNameFive] = useState('India')
 
     const [countriesData, setCountriesData] = useState([])
     const [isLoading, setLoading] = useState(true)
@@ -72,7 +71,7 @@ const StartScreen = ({ navigation }) => {
                     <TextInput
                         style={styles.startInput}
                         placeholder='Search Here'
-                        onChangeText={(input) => { (input === '') ? setEmpty(true) : setEmpty(false); filterList(input); setNameOne(filteredList[0]); setNameTwo(filteredList[1]); setNameThree(filteredList[2]); setNameFour(filteredList[3]); setNameFive(filteredList[4]); }} />
+                        onChangeText={(input) => { (input === '') ? setEmpty(true) : setEmpty(false); filterList(input); setNameOne(filteredList[0]); setNameTwo(filteredList[1]); setNameThree(filteredList[2]); setNameFour(filteredList[3]); }} />
                 </View>
 
                 <View style={styles.list}>
