@@ -24,7 +24,7 @@ const ContinentScreen = ({ navigation, route }) => {
 
     if (isLoading) {
         return (
-            <View style={styles.startMain}>
+            <View style={styles.startLoad}>
                 <ActivityIndicator />
             </View>
         );
@@ -52,7 +52,7 @@ const ContinentScreen = ({ navigation, route }) => {
         return (
             <View style={styles.startMain}>
 
-                <Image style={{ width: 200, height: 200}} source={{ uri: 'https://images.vexels.com/media/users/3/193296/isolated/preview/12bde61b79a09e6f414909fa5adc64d1-covid-19-earth-mask-cartoon-by-vexels.png' }} />
+                <Image style={{ width: 200, height: 200 }} source={{ uri: 'https://images.vexels.com/media/users/3/193296/isolated/preview/12bde61b79a09e6f414909fa5adc64d1-covid-19-earth-mask-cartoon-by-vexels.png' }} />
 
 
                 <ListItem
@@ -64,24 +64,16 @@ const ContinentScreen = ({ navigation, route }) => {
                     {
                         newData.map((l, i) => (
                             <ListItem
+                                key = {i}
                                 title={countryNames[i]}
-                                subtitle={countryCases[i]}
+                                subtitle={countryCases[i].toString()}
                                 style={{ width: 420 }}
-                                rightTitle={countryDeaths[i]}
-                                onPress={() => console.log('hello')}
+                                rightTitle={countryDeaths[i].toString()}
                                 bottomDivider
                             />
                         ))
                     }
                 </ScrollView>
-                {/* <ListItem
-                    title={countryNames[0]}
-                    subtitle={'Cases: ' + countryCases[0]}
-                    style={{ width: 300 }}
-                    badge={{ value: countryDeaths[0], textStyle: { color: 'white' } }}
-                    onPress={() => console.log('hello')}
-                    bottomDivider
-                /> */}
             </View>
         );
     }
@@ -89,6 +81,11 @@ const ContinentScreen = ({ navigation, route }) => {
 
 
 const styles = StyleSheet.create({
+    startLoad: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
     startMain: {
         paddingTop: 20,
         flexDirection: 'column',

@@ -16,11 +16,11 @@ const CountryScreen = ({ navigation, route }) => {
     const urlOne = 'https://api.covid19api.com/dayone/country/' + countrySlug
 
     var firstCase = ''
-    var numCasesDayOne = 0
-    var currConfirmed = 0
-    var currDeaths = 0;
-    var currRecovered = 0;
-    var currActive = 0;
+    var numCasesDayOne = ''
+    var currConfirmed = ''
+    var currDeaths = ''
+    var currRecovered = ''
+    var currActive = ''
 
     useEffect(() => {
         fetch(urlOne)
@@ -60,38 +60,38 @@ const CountryScreen = ({ navigation, route }) => {
 
                 <View>
                     <ListItem
-                        title={'First Case Was Reported On:'}
+                        title={'First Case Was Reported On'}
                         rightTitle={firstCase.substring(0,10)}
                         style={{ width: 420}}
                         bottomDivider
                     />
                     <ListItem
-                        title={'Cases Registered On Day One:'}
-                        rightTitle={numCasesDayOne}
+                        title={'Cases Registered On Day One'}
+                        rightTitle={numCasesDayOne.toString()}
                         style={{ width: 420}}
                         bottomDivider
                     />
                     <ListItem
-                        title={'Total Confirmed:'}
-                        rightTitle={currConfirmed}
+                        title={'Total Confirmed'}
+                        rightTitle={currConfirmed.toString()}
                         style={{ width: 420}}
                         bottomDivider
                     />
                     <ListItem
-                        title={'Total Deaths:'}
-                        rightTitle={currDeaths}
+                        title={'Total Deaths'}
+                        rightTitle={currDeaths.toString()}
                         style={{ width: 420}}
                         bottomDivider
                     />
                     <ListItem
-                        title={'Total Recovered:'}
-                        rightTitle={currRecovered}
+                        title={'Total Recovered'}
+                        rightTitle={currRecovered.toString()}
                         style={{ width: 420}}
                         bottomDivider
                     />
                     <ListItem
-                        title={'Active Cases:'}
-                        rightTitle={currActive}
+                        title={'Active Cases'}
+                        rightTitle={currActive.toString()}
                         style={{ width: 420}}
                         bottomDivider
                     />
@@ -105,6 +105,7 @@ const CountryScreen = ({ navigation, route }) => {
 
 const styles = StyleSheet.create({
     startMain: {
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
     },

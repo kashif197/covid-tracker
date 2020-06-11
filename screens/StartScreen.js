@@ -6,6 +6,8 @@ var countries = [];
 var slugs = [];
 var filteredList = ['United States of America', 'China', 'Italy', 'Pakistan'];
 
+const leftAvatarImage = '../images/leftAvatarEarth.png'
+
 function filterList(text) {
     filteredList = []
     for (var i = 0; i < countries.length; i++) {
@@ -77,28 +79,28 @@ const StartScreen = ({ navigation }) => {
                 <View style={styles.list}>
                     <ListItem
                         title={nameOne}
-                        leftAvatar={{ size: 25, source: { uri: 'https://images.vexels.com/media/users/3/157970/isolated/preview/c156b4270aea292b9b335dd463ea17eb-earth-planet-icon-earth-icon-by-vexels.png' } }}
+                        leftAvatar={{ size: 25, source: require(leftAvatarImage) }}
                         style={{ width: 420, display: (filteredList.length > 0) ? 'flex' : 'none' }}
                         onPress={() => { navigation.navigate('Country Data', { "name": { nameOne }, "slug": countriesData[returnCountryIndex(nameOne)].Slug }) }}
                         bottomDivider
                     />
                     <ListItem
                         title={nameTwo}
-                        leftAvatar={{ size: 25, source: { uri: 'https://images.vexels.com/media/users/3/157970/isolated/preview/c156b4270aea292b9b335dd463ea17eb-earth-planet-icon-earth-icon-by-vexels.png' } }}
+                        leftAvatar={{ size: 25, source: require(leftAvatarImage) }}
                         style={{ width: 420, display: (filteredList.length > 1) ? 'flex' : 'none' }}
                         onPress={() => { navigation.navigate('Country Data', { "name": { nameTwo }, "slug": countriesData[returnCountryIndex(nameTwo)].Slug }) }}
                         bottomDivider
                     />
                     <ListItem
                         title={nameThree}
-                        leftAvatar={{ size: 25, source: { uri: 'https://images.vexels.com/media/users/3/157970/isolated/preview/c156b4270aea292b9b335dd463ea17eb-earth-planet-icon-earth-icon-by-vexels.png' } }}
+                        leftAvatar={{ size: 25, source: require(leftAvatarImage) }}
                         style={{ width: 420, display: (filteredList.length > 2) ? 'flex' : 'none' }}
                         onPress={() => { navigation.navigate('Country Data', { "name": { nameThree }, "slug": countriesData[returnCountryIndex(nameThree)].Slug }) }}
                         bottomDivider
                     />
                     <ListItem
                         title={nameFour}
-                        leftAvatar={{ size: 25, source: { uri: 'https://images.vexels.com/media/users/3/157970/isolated/preview/c156b4270aea292b9b335dd463ea17eb-earth-planet-icon-earth-icon-by-vexels.png' } }}
+                        leftAvatar={{ size: 25, source: require(leftAvatarImage) }}
                         style={{ width: 420, display: (filteredList.length > 3) ? 'flex' : 'none' }}
                         onPress={() => { navigation.navigate('Country Data', { "name": { nameFour }, "slug": countriesData[returnCountryIndex(nameFour)].Slug }) }}
                         bottomDivider
