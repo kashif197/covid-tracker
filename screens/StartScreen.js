@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, ActivityIndicator, Image, Button } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Switch, ActivityIndicator, Image } from 'react-native';
 import { ListItem } from 'react-native-elements'
 
 var countries = [];
@@ -25,6 +25,9 @@ function returnCountryIndex(quer) {
     }
 }
 
+
+
+
 const StartScreen = ({ navigation }) => {
     const [isEmpty, setEmpty] = useState(true)
     const [nameOne, setNameOne] = useState('United States of America')
@@ -34,6 +37,11 @@ const StartScreen = ({ navigation }) => {
 
     const [countriesData, setCountriesData] = useState([])
     const [isLoading, setLoading] = useState(true)
+
+    const [darkMode, setDarkMode] = useState(false)
+
+    const toggleSwitch = () => setDarkMode(previousState => !previousState);
+
 
     useEffect(() => {
         fetch('https://api.covid19api.com/countries')
@@ -66,7 +74,14 @@ const StartScreen = ({ navigation }) => {
             slugs.push(data.Slug)
         })
         return (
-            <View style={styles.startMain}>
+            <View style={[styles.startMain, {backgroundColor: darkMode ? '#121212' : 'white'}]}>
+                <Switch
+                    trackColor={{ false: "#767577", true: "#81b0ff" }}
+                    thumbColor={darkMode ? "#f5dd4b" : "#f4f3f4"}
+                    ios_backgroundColor="#3e3e3e"
+                    onValueChange={toggleSwitch}
+                    value={darkMode}
+                />
                 <Image style={{ width: 250, height: 250, display: (isEmpty) ? 'flex' : 'none' }} source={{ uri: 'https://images.vexels.com/media/users/3/193296/isolated/preview/12bde61b79a09e6f414909fa5adc64d1-covid-19-earth-mask-cartoon-by-vexels.png' }} />
 
                 <View style={{ paddingTop: 20 }}>
@@ -81,31 +96,39 @@ const StartScreen = ({ navigation }) => {
                         title={nameOne}
                         leftAvatar={{ size: 25, source: require(leftAvatarImage) }}
                         style={{ width: 420, display: (filteredList.length > 0) ? 'flex' : 'none' }}
+                        containerStyle={{ backgroundColor: darkMode ? 'black' : 'white' }}
+                        titleStyle={{ color: darkMode ? 'white' : 'black' }}
+                        rightTitleStyle={{ color: darkMode ? 'white' : 'black' }}
                         onPress={() => { navigation.navigate('Country Data', { "name": { nameOne }, "slug": countriesData[returnCountryIndex(nameOne)].Slug }) }}
-                        bottomDivider
                     />
                     <ListItem
                         title={nameTwo}
                         leftAvatar={{ size: 25, source: require(leftAvatarImage) }}
                         style={{ width: 420, display: (filteredList.length > 1) ? 'flex' : 'none' }}
+                        containerStyle={{ backgroundColor: darkMode ? 'black' : 'white' }}
+                        titleStyle={{ color: darkMode ? 'white' : 'black' }}
+                        rightTitleStyle={{ color: darkMode ? 'white' : 'black' }}
                         onPress={() => { navigation.navigate('Country Data', { "name": { nameTwo }, "slug": countriesData[returnCountryIndex(nameTwo)].Slug }) }}
-                        bottomDivider
                     />
                     <ListItem
                         title={nameThree}
                         leftAvatar={{ size: 25, source: require(leftAvatarImage) }}
                         style={{ width: 420, display: (filteredList.length > 2) ? 'flex' : 'none' }}
+                        containerStyle={{ backgroundColor: darkMode ? 'black' : 'white' }}
+                        titleStyle={{ color: darkMode ? 'white' : 'black' }}
+                        rightTitleStyle={{ color: darkMode ? 'white' : 'black' }}
                         onPress={() => { navigation.navigate('Country Data', { "name": { nameThree }, "slug": countriesData[returnCountryIndex(nameThree)].Slug }) }}
-                        bottomDivider
                     />
                     <ListItem
                         title={nameFour}
                         leftAvatar={{ size: 25, source: require(leftAvatarImage) }}
                         style={{ width: 420, display: (filteredList.length > 3) ? 'flex' : 'none' }}
+                        containerStyle={{ backgroundColor: darkMode ? 'black' : 'white' }}
+                        titleStyle={{ color: darkMode ? 'white' : 'black' }}
+                        rightTitleStyle={{ color: darkMode ? 'white' : 'black' }}
                         onPress={() => { navigation.navigate('Country Data', { "name": { nameFour }, "slug": countriesData[returnCountryIndex(nameFour)].Slug }) }}
-                        bottomDivider
                     />
-                    
+
                     <View style={{ paddingTop: 20, alignItems: 'center', justifyContent: 'flex-end', display: (isEmpty) ? 'none' : 'flex' }}>
                         <Image style={{ width: 150, height: 150, }} source={{ uri: 'https://image.flaticon.com/icons/png/512/2731/2731265.png' }} />
 
@@ -113,8 +136,8 @@ const StartScreen = ({ navigation }) => {
 
 
                 </View>
-                <View style={{ display: (isEmpty) ? 'flex' : 'none' }}>
-                    <Text style={styles.footer}>Coded With 💖</Text>
+                <View style={{ display: (isEmpty) ? 'flex' : 'none', alignContent: 'center', justifyContent: 'center' }}>
+                    <Text style={[styles.footer, {color: darkMode ? 'white' : 'black'}]}>Coded With 💖</Text>
                 </View>
             </View>
         );
@@ -125,12 +148,12 @@ const styles = StyleSheet.create({
     startLoad: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'center'
     },
     startMain: {
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: 15
     },
     startInput: {
         borderColor: 'black',
@@ -139,19 +162,8 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         fontSize: 18
     },
-    button: {
-        alignItems: "center",
-        backgroundColor: "green",
-        width: 200,
-        padding: 10,
-        borderRadius: 10,
-        borderWidth: 3,
-        borderColor: 'orange',
-        margin: 10
-    },
     list: {
         paddingTop: 10,
-
     },
     footer: {
         fontSize: 17,

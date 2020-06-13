@@ -37,6 +37,10 @@ const GlobalScreen = () => {
                     title={'New Confirmed'}
                     rightTitle={globalData.Global.NewConfirmed.toString()}
                     style={{ width: 420 }}
+                    containerStyle={{ backgroundColor: 'black' }}
+                    titleStyle={{ color: 'white' }}
+                    rightTitleStyle={{color: 'white'}}
+                    onPress={() => console.log('tap')}
                     bottomDivider
                 />
                 <ListItem

@@ -32,9 +32,9 @@ const StackNavigator = () => {
   return (
     <Stack.Navigator
     screenOptions={({navigation}) => ({
-      headerLeft: () => <SimpleLineIcons name="menu" size={24} style={{paddingLeft: 7, marginTop: 5}} color="black" onPress={() => navigation.toggleDrawer()} />
+      headerLeft: () => <SimpleLineIcons name="menu" size={24} style={{paddingLeft: 7, marginTop: 5}} color="white" onPress={() => navigation.toggleDrawer()} />
     })}>
-      <Stack.Screen name="COVID19 Tracker" component={StartScreen} options={{ headerTitleAlign: 'center'}} />
+      <Stack.Screen name="COVID19 Tracker" component={StartScreen} options={{ headerTitleAlign: 'center', headerTintColor: '#fff' , headerStyle: { backgroundColor: '#272727' }}} />
       <Stack.Screen name="Global Data" component={GlobalScreen} />
       <Stack.Screen name="Country Data" component={CountryScreen} />
       <Stack.Screen name="Continent Data" component={ContinentScreen} />
